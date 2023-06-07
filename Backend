@@ -1,0 +1,20 @@
+//install pithon 3.7.9 in order to be able to use chatterbot library
+//after run the following commands in console :pip install chatterbot
+pip install chatterbot==1.0.4
+pip install chatterbot-corpus
+
+
+
+from chatterbot import ChatBot
+from chatterbot.trainers import ChatterBotCorpusTrainer
+
+english_bot = ChatBot("Chatterbot")
+trainer = ChatterBotCorpusTrainer(english_bot)
+trainer.train("chatterbot.corpus.english")
+
+print("Your new assistant is ready!")
+
+while True:
+    user_input = input("You: ")
+    response = english_bot.get_response(user_input)
+    print("Bot:", response)
